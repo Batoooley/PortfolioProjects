@@ -1,5 +1,4 @@
-//version: dec26 EVENING!!!
-//TO DO: make smei-magic into smaller sigils + make section for magic
+//version: Dec 26, cleaned & restored to state at exhibition
 
 import java.util.*;
 import processing.core.PApplet;
@@ -7,7 +6,7 @@ import gohai.simplereceiptprinter.*;
 import processing.serial.*;
 
 SimpleReceiptPrinter printer;
-PWindow win; //---BRING BACK AFTER BEBUGGING DEC 26
+PWindow win; 
 
 Sorting sorter;
 Mathing mather;
@@ -46,14 +45,14 @@ void setup() {
   mather = new Mathing();
   counter = 0; 
 
-  //noLoop();
-
-  String[] ports = SimpleReceiptPrinter.list(); ////PRINTER
+  ////PRINTER setup start
+  String[] ports = SimpleReceiptPrinter.list(); 
   println("Available serial ports:"); 
-  printArray(ports); ////PRINTER
+  printArray(ports); 
   String port = ports[0];
   println("Attempting to use " + port);
-  printer = new SimpleReceiptPrinter(this, ports[0], 2.68, 9600); ////PRINTER 2.68
+  printer = new SimpleReceiptPrinter(this, ports[0], 2.68, 9600); 
+  ////PRINTER setup end
 
   win = new PWindow();
   printer.println("HI");
@@ -75,12 +74,12 @@ void draw () {
       int idx = grid[i][j] - 1; //counter:
       PVector ns = new PVector ( step + (i * step), step + (j * step) ); //positions
       PVector midCell = new PVector (ns.x - (step/2), ns.y - (step/2));
-      posArr[idx] = new PVector(midCell.x, midCell.y);                  //(n.x, n.y); //((step/2) + i * step, (step/2) + j * step);
+      posArr[idx] = new PVector(midCell.x, midCell.y);                  
 
       textAlign(CENTER);
       textSize(20);
       fill(0);
-      text(grid[i][j], midCell.x, midCell.y); //n.x, n.y);
+      text(grid[i][j], midCell.x, midCell.y); 
 
       pushStyle();
       noFill();
@@ -103,16 +102,16 @@ void draw () {
   pushStyle();
   noFill();
   strokeWeight(5);
-  stroke(0);//(255, 204, 204);//(200, 255, 200); //the light green line
+  stroke(0);
   strokeJoin(ROUND);
   beginShape();
 
   for (int dr = 0; dr < posArr.length; dr++) {
 
     float posX = posArr[dr].x;
-    float posY = posArr[dr].y;   //float posY = (step * 3) + dr * (width / 3);
+    float posY = posArr[dr].y;   
 
-    vertex(posX, posY); //(step * 3) + (dr * (width / 11)), posArr[dr].y);
+    vertex(posX, posY); 
 
     if (dr == 0) {
       pushStyle();
@@ -129,7 +128,7 @@ void draw () {
   popMatrix(); 
 
   if (magic || semiMagic) {
-   noLoop();                    //stop the frame from refreshing while printer is printing to wait for it
+    noLoop();                    //stop the frame from refreshing while printer is printing to wait for it
     printer.printBitmap(get()); ////PRINTER
   } if (magic == false || semiMagic == false){
     loop();
