@@ -19,18 +19,13 @@ class PWindow extends PApplet {
 
   void setup() { //SimpleReceiptPrinter P
     frameRate(5);
-    //vals = new int[(n*n)];                   //square of n = size of this array
-    //for (int i = 0; i < vals.length; i++) {
-    //  vals[i] = i + 1;                       //+1 because the value "0" is not used in the magic squares
-    //}
     ctr = 0;
-    //noLoop();
     fill(0);
     rect(mar + leng, mar + leng, width, height);
   }
 
-  void draw() { //
-    //background(255); //(150, 200, 224);
+  void draw() { 
+  
     pushStyle();
     fill(255);
     noStroke();
@@ -39,6 +34,7 @@ class PWindow extends PApplet {
     popStyle();
 
     ctr++;
+    
     fill(0);
     text(ctr, mar + 5, mar - 5);
 
@@ -55,7 +51,7 @@ class PWindow extends PApplet {
         int idx = grid[i][j] - 1; //counter:
         PVector n = new PVector ( 30 + (i * stp), 30 + (j * stp) ); //positions
 
-        posArr[idx] = new PVector(n.x, n.y); //((step/2) + i * step, (step/2) + j * step);
+        posArr[idx] = new PVector(n.x, n.y); 
 
         textAlign(CENTER);
         textSize(12);
@@ -73,7 +69,7 @@ class PWindow extends PApplet {
     beginShape();
     for (int dr = 0; dr < posArr.length; dr++) {
       float poX = 65 + (stp * 3) + (dr * (width / 30)); //FIX ON SCREEN
-      float poY = posArr[dr].y;//(step * 3) + dr * (width / 3);
+      float poY = posArr[dr].y; 
 
       rectMode(CENTER);
       vertex(poX, poY);
@@ -82,12 +78,12 @@ class PWindow extends PApplet {
 
       if (dr == 0) {
         pushStyle();
-        fill(0);//(255, 204, 204);//(200, 255, 200);
-        ellipse(poX, poY, 10, 10); //(stp * 3) + dr * (width / 3), 10, 10);
+        fill(0);
+        ellipse(poX, poY, 10, 10); 
         popStyle();
       } 
       if (dr == 15) {
-        rect(poX, poY, 10, 10); // (stp * 3) + dr * (width / 3), 20, 1);
+        rect(poX, poY, 10, 10); 
       }
     }
     endShape();
@@ -96,7 +92,7 @@ class PWindow extends PApplet {
     beginShape();
 
     for (int dr = 0; dr < posArr.length; dr++) {
-      float poX = posArr[dr].x;  //(stp * 3) + (dr * (width / 11)); //
+      float poX = posArr[dr].x;  
       float poY = 65 + (stp * 3) + dr * (height / 22); //posArr[dr].y;
 
       rectMode(CENTER);
@@ -106,12 +102,12 @@ class PWindow extends PApplet {
 
       if (dr == 0) {
         pushStyle();
-        fill(0);//(255, 204, 204);//(200, 255, 200);
-        ellipse(poX, poY, 10, 10); //(stp * 3) + dr * (width / 3), 10, 10);
+        fill(0);
+        ellipse(poX, poY, 10, 10); 
         popStyle();
       } 
       if (dr == 15) {
-        rect(poX, poY, 10, 10); // (stp * 3) + dr * (width / 3), 20, 1);
+        rect(poX, poY, 10, 10); 
       }
     }
     endShape();
@@ -121,20 +117,20 @@ class PWindow extends PApplet {
     strokeWeight(3);
     beginShape();
     for (int dr = 0; dr < posArr.length; dr++) {
-      float poX = posArr[dr].x;  //(stp * 3) + (dr * (width / 11)); //
-      float poY = posArr[dr].y; //(stp * 3) + dr * (height / 15);
+      float poX = posArr[dr].x; 
+      float poY = posArr[dr].y; 
 
       rectMode(CENTER);
       vertex(poX, poY);
 
       if (dr == 0) {
         pushStyle();
-        fill(0);//(255, 204, 204);//(200, 255, 200);
-        ellipse(poX, poY, 10, 10); //(stp * 3) + dr * (width / 3), 10, 10);
+        fill(0);
+        ellipse(poX, poY, 10, 10); 
         popStyle();
       } 
       if (dr == 15) {
-        rect(poX, poY, 10, 10); // (stp * 3) + dr * (width / 3), 20, 1);
+        rect(poX, poY, 10, 10); 
       }
     }
     endShape();
@@ -150,11 +146,11 @@ class PWindow extends PApplet {
       box.x += leng/2; 
       popMatrix();
     }
-    if (box.x >= width ) { //- (leng/2 - mar)
+    if (box.x >= width ) { 
       box.x = leng + mar;
       box.y += leng/2;
     } 
-    if (box.y >= height - leng) { // - (leng/2 - mar)
+    if (box.y >= height - leng) { 
       box.y = leng + mar;
       fill(0);
       rect(mar + leng, mar + leng, width, height);
@@ -180,8 +176,8 @@ class PWindow extends PApplet {
     scale(0.5, 0.5);
     beginShape();
     for (int dr = 0; dr < posArr.length; dr++) {
-      float poX = posArr[dr].x;  //(stp * 3) + (dr * (width / 11)); //
-      float poY = posArr[dr].y; //(stp * 3) + dr * (height / 15);
+      float poX = posArr[dr].x;  
+      float poY = posArr[dr].y; 
       strokeWeight(3);
       stroke(255);
       rectMode(CENTER);
@@ -189,12 +185,12 @@ class PWindow extends PApplet {
 
       if (dr == 0) {
         pushStyle();
-        fill(0);//(255, 204, 204);//(200, 255, 200);
-        ellipse(poX, poY, 10, 10); //(stp * 3) + dr * (width / 3), 10, 10);
+        fill(0);
+        ellipse(poX, poY, 10, 10); 
         popStyle();
       } 
       if (dr == 15) {
-        rect(poX, poY, 10, 10); // (stp * 3) + dr * (width / 3), 20, 1);
+        rect(poX, poY, 10, 10); 
       }
     }
     endShape();
